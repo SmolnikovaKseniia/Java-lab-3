@@ -39,6 +39,37 @@ class GildedRose {
         }
     }
 
+    private void updateAgedBrieQuality(Item item) {
+        increaseQuality(item);
+        if (isExpired(item)) {
+            increaseQuality(item);
+        }
+    }
+
+    private void updateBackstagePassQuality(Item item) {
+        increaseQuality(item);
+
+        if (item.sellIn < 10) {
+            increaseQuality(item);
+        }
+        if (item.sellIn < 5) {
+            increaseQuality(item);
+        }
+
+        if (isExpired(item)) {
+            item.quality = 0;
+        }
+    }
+
+    private void updateStandardItemQuality(Item item) {
+        decreaseQuality(item);
+
+        if (isExpired(item)) {
+            decreaseQuality(item);
+        }
+    }
+}
+
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
 
@@ -68,3 +99,4 @@ class GildedRose {
         }
     }
 }
+
