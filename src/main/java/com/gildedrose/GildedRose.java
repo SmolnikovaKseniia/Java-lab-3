@@ -7,6 +7,38 @@ class GildedRose {
         this.items = items;
     }
 
+    private boolean isSulfuras(Item item) {
+        return item.name.equals("Sulfuras, Hand of Ragnaros");
+    }
+
+    private boolean isAgedBrie(Item item) {
+        return item.name.equals("Aged Brie");
+    }
+
+    private boolean isBackstagePass(Item item) {
+        return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
+    }
+
+    private boolean isExpired(Item item) {
+        return item.sellIn < 0;
+    }
+
+    private void decreaseSellIn(Item item) {
+        item.sellIn --;
+    }
+
+    private void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality ++;
+        }
+    }
+
+    private void decreaseQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality --;
+        }
+    }
+
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
 
