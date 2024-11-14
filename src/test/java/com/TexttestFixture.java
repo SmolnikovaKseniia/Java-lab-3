@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com;
 
 public class TexttestFixture {
     public static void main(String[] args) {

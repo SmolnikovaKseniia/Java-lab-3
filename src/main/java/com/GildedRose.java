@@ -1,27 +1,13 @@
-package com.gildedrose;
-
-import java.util.List;
-
-class Item {
-    String name;
-    int sellIn;
-    int quality;
-
-    public Item(String name, int sellIn, int quality) {
-        this.name = name;
-        this.sellIn = sellIn;
-        this.quality = quality;
-    }
-}
+package com;
 
 interface ItemUpdater {
     void update(Item item);
 }
 
 class GildedRose {
-    private List<Item> items;
+    public Item[] items;
 
-    public GildedRose(List<Item> items) {
+    public GildedRose(Item[] items) {
         this.items = items;
     }
 
@@ -70,10 +56,10 @@ class BackstagePassUpdater implements ItemUpdater {
     public void update(Item item) {
         increaseQuality(item);
 
-        if (item.sellIn < 10) {
+        if (item.sellIn < 11) {
             increaseQuality(item);
         }
-        if (item.sellIn < 5) {
+        if (item.sellIn < 6) {
             increaseQuality(item);
         }
 
@@ -101,7 +87,9 @@ class SulfurasUpdater implements ItemUpdater {
 class StandardItemUpdater implements ItemUpdater {
     @Override
     public void update(Item item) {
-        decreaseQuality(item);
+        if (item.quality > 0) {
+            decreaseQuality(item);
+        }
         if (item.sellIn < 0) {
             decreaseQuality(item);
         }
